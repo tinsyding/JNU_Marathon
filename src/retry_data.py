@@ -1,9 +1,9 @@
 
 # src/retry_data.py
+from pathlib import Path
 from selenium.common.exceptions import WebDriverException
 from scraper import retry_failed_bibs
 from utils import initialize_driver, choose_browser
-from pathlib import Path
 
 def main():
     '''
