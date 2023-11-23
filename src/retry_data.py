@@ -18,18 +18,11 @@ def main():
         return
 
     driver = None
-    try:
-        browser = choose_browser()
-        if browser is None:
-            raise ValueError("No valid browser selected.")
-
-        driver = initialize_driver(browser)
-        retry_failed_bibs(driver, error_log_path)
-    except WebDriverException as e:
-        print(f"Web driver error: {e}")
-    finally:
-        if driver:
-            driver.quit()
+    browser = choose_browser()
+    driver = initialize_driver(browser)
+    retry_failed_bibs(driver, error_log_path)
+    if driver:
+        driver.quit()
 
 if __name__ == "__main__":
     main()
