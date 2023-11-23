@@ -6,7 +6,7 @@ import requests
 from pathlib import Path
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.common.by import By
 
 
@@ -14,21 +14,13 @@ def choose_browser():
     '''Prompt user to choose a browser and return the corresponding WebDriver.'''
     browser_choice = input("Please enter the browser you want to use (Chrome, Edge, Firefox): ").lower()
     if browser_choice == 'chrome':
-        return webdriver.Chrome
+        return webdriver.Chrome()
     elif browser_choice == 'edge':
-        return webdriver.Edge
+        return webdriver.Edge()
     elif browser_choice == 'firefox':
-        return webdriver.Firefox
+        return webdriver.Firefox()
     else:
         print("Invalid input, please enter Chrome, Edge, or Firefox.")
-        return None
-
-def initialize_driver(browser):
-    '''Initialize and return the WebDriver for the specified browser.'''
-    try:
-        return browser()
-    except Exception as e:
-        print("Failed to initialize WebDriver.")
         return None
 
 class DataFileWriter:
@@ -63,7 +55,7 @@ def download_image(driver, bib_number):
         download_button = driver.find_element(By.ID, 'downloadBtn')
         download_button.click()
 
-        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.TAG_NAME, 'img')))
+        WebDriverWait(driver, 10).until(expected_conditions.presence_of_element_located((By.TAG_NAME, 'img')))
         time.sleep(random.randint(2, 3))
 
         image = driver.find_element(By.TAG_NAME, 'img')
@@ -75,7 +67,7 @@ def download_image(driver, bib_number):
         with open(image_path, 'wb') as picture_file:
             picture_file.write(response.content)
 
-    except Exception as e:
+    except Exception:
         log_file_path = Path(__file__).parent.parent / 'logs' / 'picture_error.log'
         log_file_path.parent.mkdir(exist_ok=True)
         with open(log_file_path, 'a') as error_log:
@@ -88,3 +80,8 @@ def get_data_file_writer(file_name='data.csv'):
     data_path.mkdir(exist_ok=True)
     data_file_path = data_path / file_name
     return DataFileWriter(data_file_path)
+
+def log_error(bib_number, file_path):
+    '''Log a bib number to a file.'''
+    with open(file_path, 'a') as file:
+        file.write(f'{bib_number}\n')

@@ -1,9 +1,7 @@
-
 # src/retry_data.py
 from pathlib import Path
-from selenium.common.exceptions import WebDriverException
 from scraper import retry_failed_bibs
-from utils import initialize_driver, choose_browser
+from utils import choose_browser
 
 def main():
     '''
@@ -12,14 +10,12 @@ def main():
     '''
     error_log_path = Path('logs/data_error.log')
     
-    # Check if there are any failed records to retry
     if not error_log_path.exists() or error_log_path.stat().st_size == 0:
         print("No failed data scraping records found.")
         return
 
     driver = None
-    browser = choose_browser()
-    driver = initialize_driver(browser)
+    driver = choose_browser()
     retry_failed_bibs(driver, error_log_path)
     if driver:
         driver.quit()

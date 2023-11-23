@@ -3,10 +3,10 @@ import time
 import random
 from pathlib import Path
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import WebDriverException, NoSuchElementException
-from utils import get_data_file_writer, download_image
+from utils import get_data_file_writer, download_image, log_error
 
 BASE_URL = "http://public.svstiming.cn/results.html?gameid=185&bib="
 NUMBER_RANGES = {
@@ -29,7 +29,7 @@ def scrape_bib_number(driver, writer, bib_number):
     try:
         driver.get(url)
 
-        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, 'eventtd')))
+        WebDriverWait(driver, 10).until(expected_conditions.presence_of_element_located((By.ID, 'eventtd')))
         time.sleep(random.randint(1, 2))
         
         event = driver.find_element(By.ID, 'eventtd').text or 'N/A'
@@ -43,7 +43,7 @@ def scrape_bib_number(driver, writer, bib_number):
 
         download_image(driver, bib_number)
 
-    except (WebDriverException, NoSuchElementException) as e:
+    except (WebDriverException, NoSuchElementException):
         log_file_path = Path(__file__).parent.parent / 'logs' / 'data_error.log'
         log_file_path.parent.mkdir(exist_ok=True)
         with open(log_file_path, 'a') as error_log:
@@ -66,15 +66,10 @@ def retry_failed_bibs(driver):
             try:
                 scrape_bib_number(driver, writer, bib)
                 successful_retries.append(bib)
-            except Exception as e:
+            except Exception:
                 log_error(bib, 'logs/data_error_2.log')
 
     with error_log_path.open('w') as file:
         for bib in error_bibs:
             if bib.strip() not in successful_retries:
                 file.write(bib)
-
-def log_error(bib_number, file_path):
-    '''Log a bib number to a file.'''
-    with open(file_path, 'a') as file:
-        file.write(f'{bib_number}\n')
