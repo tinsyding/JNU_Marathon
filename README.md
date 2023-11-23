@@ -37,7 +37,7 @@ pip install -r requirements.txt
 1. 在项目的根目录下，运行：
 
 ```bash
-python -m src.main
+python -m src.main.py
 ```
 
 2. 按照提示选择一个Web浏览器（Chrome、Edge或Firefox）。
