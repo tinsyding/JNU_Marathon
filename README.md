@@ -40,7 +40,7 @@ pip install -r requirements.txt
 python -m src.main.py
 ```
 
-2. 按照提示选择一个Web浏览器（Chrome、Edge或Firefox）。
+2. 按照提示选择一个Web浏览器（Google Chrome、Microsoft Edge、Mozilla Firefox）。
 3. 程序将开始爬取数据并保存到 data 目录下的 data.csv 文件中。
 4. 未能爬取的胸牌号码将被保存在 logs 目录下。
 
