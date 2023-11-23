@@ -42,7 +42,7 @@ python -m src.main.py
 
 2. 按照提示选择一个Web浏览器（Chrome、Edge或Firefox）。
 3. 程序将开始爬取数据并保存到 data 目录下的 data.csv 文件中。
-4. 相关的日志将被保存在 logs 目录下。
+4. 未能爬取的胸牌号码将被保存在 logs 目录下。
 
 5. 如果你想二次爬取第一次未能成功的数据，在项目的根目录下，运行：
 ```bash
