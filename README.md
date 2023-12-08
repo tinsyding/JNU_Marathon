@@ -37,7 +37,7 @@ pip install -r requirements.txt
 1. 在项目的根目录下，运行：
 
 ```bash
-python -m src.main.py
+python src\\main.py
 ```
 
 2. 按照提示选择一个Web浏览器（Google Chrome、Microsoft Edge、Mozilla Firefox）。
@@ -46,7 +46,7 @@ python -m src.main.py
 
 5. 如果你想二次爬取第一次未能成功的数据，在项目的根目录下，运行：
 ```bash
-python -m src.retry_data.py
+python src\\retry_data.py
 ```
 
 ## 注意事项
