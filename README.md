@@ -15,43 +15,45 @@
 - Selenium
 - Requests
 
-## 安装
+## 安装依赖
 
-确保你有Python3和pip安装在你的计算机上。然后，克隆这个仓库。
+1. 确保Python3和pip安装在你的计算机上。然后，克隆这个仓库。
 
-```bash
-git clone https://github.com/tinsyding/JNU_Marathon.git
-cd JNU_Marathon
-```
+    ```bash
+    git clone https://github.com/tinsyding/JNU_Marathon.git
+    cd JNU_Marathon
+    ```
 
-## 依赖
 
-在项目的根目录下，运行以下命令安装所需依赖：
+2. 在项目的根目录下，运行以下命令安装所需依赖：
 
-```bash
-pip install -r requirements.txt
-```
+    ```bash
+    pip install -r requirements.txt
+    ```
 
 ## 使用
 
 1. 在项目的根目录下，运行：
 
-```bash
-python src\\main.py
-```
+    ```bash
+    python src\\main.py
+    ```
 
 2. 按照提示选择一个Web浏览器（Google Chrome、Microsoft Edge、Mozilla Firefox）。
+
 3. 程序将开始爬取数据并保存到 data 目录下的 data.csv 文件中。
+
 4. 未能爬取的胸牌号码将被保存在 logs 目录下。
 
 5. 如果你想二次爬取第一次未能成功的数据，在项目的根目录下，运行：
-```bash
-python src\\retry_data.py
-```
+
+    ```bash
+    python src\\retry_data.py
+    ```
 
 ## 注意事项
 
-- 2023年11月23日，该项目仍有效。
+- 2023年12月24日，该项目仍有效。
 - 请确保在遵守目标网站服务条款的前提下使用本脚本。
 - 网站结构的变更可能导致脚本失效，此时需要对脚本进行相应的更新。
 
