@@ -1,6 +1,7 @@
 # JNU_Marathon
 
-这是一个用于爬取江南大学2023年马拉松赛事成绩的Python项目。它使用Selenium和Requests库来抓取网页数据并保存到CSV文件中。
+这是一个用于爬取江南大学2023年马拉松赛事成绩的Python脚本。  
+该脚本使用Selenium和Requests库来抓取网页数据并保存到CSV文件中。
 
 ## 功能
 
