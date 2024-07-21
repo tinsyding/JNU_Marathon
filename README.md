@@ -51,18 +51,3 @@
     ```bash
     python src\\retry_data.py
     ```
-
-## 注意事项
-
-- 2023年12月24日，该项目仍有效。
-- 请确保在遵守目标网站服务条款的前提下使用本脚本。
-- 网站结构的变更可能导致脚本失效，此时需要对脚本进行相应的更新。
-
-## 贡献
-如果你想为这个项目贡献代码，请遵循以下步骤：
-
-1. Fork 这个仓库。
-2. 创建一个新的分支 (`git checkout -b feature/your_feature`).
-3. 提交你的更改 (`git commit -am 'Add some feature'`).
-4. 推送到分支 (`git push origin feature/your_feature`).
-5. 创建一个新的Pull Request。
