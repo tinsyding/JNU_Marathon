@@ -1,6 +1,6 @@
 # JNU_Marathon
 
-这是一个用于爬取江南大学2023年马拉松赛事成绩的Python脚本。  
+这是一个用于爬取江南大学2023年和2024马拉松赛事成绩的Python脚本，该网站下的其他赛事也可以使用。
 该脚本使用Selenium和Requests库来抓取网页数据并保存到CSV文件中。
 
 ## 功能
@@ -18,7 +18,7 @@
 
 ## 安装依赖
 
-1. 确保Python3和pip安装在你的计算机上。然后，克隆这个仓库。
+1. 确保Python3和pip已安装。然后，克隆仓库。
 
     ```bash
     git clone https://github.com/tinsyding/JNU_Marathon.git
@@ -37,7 +37,7 @@
 1. 在项目的根目录下，运行：
 
     ```bash
-    python src\\main.py
+    python reptile.py
     ```
 
 2. 按照提示选择一个Web浏览器（Google Chrome、Microsoft Edge、Mozilla Firefox）。
@@ -45,9 +45,3 @@
 3. 程序将开始爬取数据并保存到 data 目录下的 data.csv 文件中。
 
 4. 未能爬取的胸牌号码将被保存在 logs 目录下。
-
-5. 如果你想二次爬取第一次未能成功的数据，在项目的根目录下，运行：
-
-    ```bash
-    python src\\retry_data.py
-    ```

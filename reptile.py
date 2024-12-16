@@ -11,7 +11,8 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import WebDriverException, NoSuchElementException
 import requests
 
-BASE_URL = "http://public.svstiming.cn/results.html?gameid=185&bib="
+url = "http://public.svstiming.cn/results.html?gameid=185&bib="  #2023
+# url = "http://public.svstiming.cn/results.html?gameid=815&bib="  #2024
 
 NUMBER_RANGES = {
     'A': [(1001, 1350), (2001, 2060)],
@@ -26,7 +27,6 @@ data_dir = Path(__file__).parent / 'data'
 images_dir = Path(__file__).parent / 'images'
 log_dir = Path(__file__).parent / 'logs'
 
-# create directories if they do not exist
 os.makedirs(data_dir, exist_ok=True)
 os.makedirs(images_dir, exist_ok=True)
 os.makedirs(log_dir, exist_ok=True)
@@ -40,7 +40,7 @@ with open(data_dir / 'data.csv', mode="a", newline='', encoding='utf-8') as file
         for start, end in NUMBER_RANGES[prefix]:
             for i in range(start, end + 1):
                 bib_number = f"{prefix}{i}"
-                url = f"{BASE_URL}{bib_number}"
+                url = f"{url}{bib_number}"
                 try:
                     driver.get(url)
                     WebDriverWait(driver, 10).until(expected_conditions.presence_of_element_located((By.ID, 'eventtd')))
